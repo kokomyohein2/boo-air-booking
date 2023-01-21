@@ -1,6 +1,8 @@
 package io.codeandpaan.booairbookingtx.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.jsonschema.JsonSerializableSchema;
+import io.codeandpaan.booairbookingtx.annotation.Init;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -26,4 +28,8 @@ public class PassengerInfo {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date travelDate;
     private double fare;
+
+    private void initNames() {
+        this.name = this.name.substring(0, 1).toUpperCase() + this.name.substring(1);
+    }
 }
